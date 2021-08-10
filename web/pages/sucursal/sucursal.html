@@ -1,0 +1,101 @@
+<article class="row col-12 m-auto mb-3">
+    <figure class="figure mt-3 banner-top">
+        <div>
+            <span></span>
+            <img src="assets/images/banner-tratamientos.png" class="img-fluid" alt="productos de spa">
+            <figcaption class="figure-caption align-self-center fs-1">Sucursales</figcaption>
+        </div>
+    </figure>
+</article>
+
+<article class="main-modal col-8 m-lg-0 m-auto">
+    <form action="" class="form formulario col-10 col-sm-8 col-xxl-4 p-2 p-sm-5">
+        <div class="row p-0 m-0">
+            <h2 class="mb-4 title-form">Nueva Sucursal</h2>
+            <div class="form-floating mb-3 col-3">
+                <input type="text" class="form-control" name="id" id="id" placeholder="example" autocomplete="off" required>
+                <label for="id" class="mx-3">Id</label>
+            </div>
+            <div class="form-floating mb-3 col-9">
+                <input type="text" class="form-control" name="name" id="name" placeholder="example" autocomplete="off" required>
+                <label for="name" class="mx-3">Nombre</label>
+            </div>
+            <div class="form-floating mb-3 col-6">
+                <input type="text" class="form-control" name="latitud" id="latitud" placeholder="example" autocomplete="off" reaquired>
+                <label for="address" class="mx-3">Latitud</label>
+            </div>
+            <div class="form-floating mb-3 col-6">
+                <input type="text" class="form-control" name="longitud" id="longitud" placeholder="example" autocomplete="off" required>
+                <label for="last-pa" class="mx-3">Longitud</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="address" id="address" placeholder="example" autocomplete="off" required>
+                <label for="last-ma" class="mx-3">Domicilio</label>
+            </div>
+            <div class="form-check form-switch mb-3 px-5 mx-3">
+                <input class="form-check-input" type="checkbox" id="status" name="status" checked>
+                <label class="form-check-label" for="status">Estatus</label>
+            </div>
+            <input type="hidden" name="position" id="position" value="">
+            <input type="hidden" name="action" id="action" value="CREATE">
+            <div class="row col-12 m-0 p-0">
+                <div class="col-6">
+                    <input type="submit" class="btn w-100" name="btn-submit" value="Crear">
+                </div>
+                <div class="col-6">
+                    <a class="btn cancelar w-100">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</article>
+<div class="col-12 mt-5 mt-lg-0">
+    <div class="row mb-3 m-0 p-0 px-3">
+        <div class="col-3 col-sm-2">
+            <button class="btn w-100 btn-new"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="d-flex offset-sm-3 col-9 col-sm-7 p-0">
+            <select name="type" id="options" class="form-select w-50 me-3">
+                <option value="name">Nombre</option>
+                <option value="id">id</option>
+                <option value="address">domicilio</option>
+            </select>
+            <input class="form-control me-3 search-elements" type="search" placeholder="Search" aria-label="Search">
+        </div>
+    </div>
+    <div class="row scrollbar p-0 m-0 mb-5 mb-lg-0">
+        <table class="table table-theme table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Latitud</th>
+                    <th>Longitud</th>
+                    <th>Domicilio</th>
+                    <th>Estatus</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+<template id="templ-sucursal">
+    <tr class="fila">
+        <td class="id"></td>
+        <td class="name"></td>
+        <td class="latitud"></td>
+        <td class="longitud"></td>
+        <td class="address"></td>
+        <td class="status"></td>
+        <td>
+            <button class="update btn">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button class="delete btn">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        </td>
+    </tr>
+</template>
+<script src="pages/sucursal/sucursal.js"></script>

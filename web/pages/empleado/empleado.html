@@ -1,0 +1,181 @@
+<article class="row col-12 m-auto mb-3">
+    <figure class="figure mt-3 banner-top">
+        <div>
+            <span></span>
+            <img src="assets/images/banner-tratamientos.png" class="img-fluid" alt="productos de spa">
+            <figcaption class="figure-caption align-self-center fs-1">Empleados</figcaption>
+        </div>
+    </figure>
+</article>
+
+<article class="main-modal col-8 m-lg-0 m-auto">
+    <form action="" class="form formulario col-10 col-xxl-6 p-1 p-sm-3 p-xl-5">
+        <div class="row p-0 m-0">
+            <h2 class="mb-4 title-form">Nuevo Empleado</h2>
+            <div class="form-floating mb-3 col-2">
+                <input type="text" class="form-control" name="id" id="id" placeholder="example"
+                    autocomplete="off" required>
+                <label for="name" class="mx-3">Id</label>
+            </div>
+            <div class="form-floating mb-3 col-4">
+                <input type="text" class="form-control" name="name" id="name" placeholder="example"
+                    autocomplete="off" required>
+                <label for="name" class="mx-3">Nombre</label>
+            </div>
+            <div class="form-floating mb-3 col-3">
+                <input type="text" class="form-control" name="last_pa" id="last_pa" placeholder="example"
+                autocomplete="off" required>
+                <label for="last-pa" class="mx-3">Apellido Paterno</label>
+            </div>
+            <div class="form-floating mb-3 col-3">
+                <input type="text" class="form-control" name="last_ma" id="last_ma" placeholder="example"
+                autocomplete="off" required>
+                <label for="last-ma" class="mx-3">Apellido Materno</label>
+            </div>
+            <div class="form-floating mb-3 col-8">
+                <input type="text" class="form-control" name="address" id="address" placeholder="example"
+                    autocomplete="off" reaquired>
+                <label for="address" class="mx-3">Domicilio</label>
+            </div>
+            <div class="form-floating mb-3 col-4">
+                <input type="tel" class="form-control" name="tel" id="tel" placeholder="example"
+                    autocomplete="off" required>
+                <label for="tel" class="mx-3">Telefono</label>
+            </div>
+            <div class="form-floating mb-3 col-4">
+                <input type="text" class="form-control" name="rfc" id="rfc" placeholder="example"
+                    autocomplete="off" required>
+                <label for="rfc" class="mx-3">RFC</label>
+            </div>
+            <div class="row m-0 mb-3 col-8">
+                <label for="gender" class="mb-1">Genero</label>
+                <div class="form-check col-4">
+                    <input class="form-check-input" type="radio" name="gender" id="man-gender" value="H">
+                    <label class="form-check-label" for="man-gender">
+                        Hombre
+                    </label>
+                </div>
+                <div class="form-check col-4">
+                    <input class="form-check-input" type="radio" name="gender" id="woman-gender" value="M">
+                    <label class="form-check-label" for="woman-gender">
+                        Mujer
+                    </label>
+                </div>
+                <div class="form-check col-4">
+                    <input class="form-check-input" type="radio" name="gender" id="other-gender" value="O">
+                    <label class="form-check-label" for="other-gender">
+                        Otro
+                    </label>
+                </div>
+            </div>
+            <div class="form-floating mb-3 col-4">
+                <input type="text" class="form-control" name="jobposition" id="jobposition" placeholder="example"
+                    autocomplete="off" required>
+                <label for="position" class="mx-3">Puesto</label>
+            </div>
+            <div class="form-floating mb-3 col-4">
+                <input type="text" class="form-control" name="photo" id="photo" placeholder="example"
+                    autocomplete="off" required>
+                <label for="photo" class="mx-3">Foto</label>
+            </div>
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" name="url" id="url" aria-describedby="url" aria-label="Subir">
+                <button class="btn btn-outline-secondary" type="button" id="subir">Subir</button>
+            </div>
+            <div class="form-floating mb-3 col-4">
+                <input type="text" class="form-control" name="user" id="user" placeholder="example"
+                autocomplete="off" required>
+                <label for="user" class="mx-3">Usuario</label>
+            </div>
+            <div class="form-floating mb-3 col-4">
+                <input type="password" class="form-control" name="password" id="password" placeholder="example"
+                autocomplete="off" required>
+                <label for="password" class="mx-3">Contraseña</label>
+            </div>
+            <div class="form-floating mb-3 col-4">
+                <input type="password" class="form-control" name="password_confirm" id="password_confirm" placeholder="example"
+                autocomplete="off" required>
+                <label for="password" class="mx-3">Cofirmar Contraseña</label>
+            </div>
+            <div class="form-check form-switch mb-3 px-5 mx-3">
+                <input class="form-check-input" type="checkbox" id="status" name="status" checked>
+                <label class="form-check-label" for="status">Estatus</label>
+            </div>
+            <input type="hidden" name="position" id="position" value="">
+            <input type="hidden" name="action" id="action" value="CREATE">
+            <div class="row col-8 m-auto p-0">
+                <div class="col-6">
+                    <input type="submit" class="btn btn-dark w-100" name="btn-submit" value="Crear">
+                </div>
+                <div class="col-6">
+                    <a class="btn btn-danger cancelar w-100">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</article>
+<div class="col-12 mt-5 mt-lg-0">
+    <div class="row mb-3 m-0 p-0 px-3">
+        <div class="col-3 col-sm-2">
+            <button class="btn btn-success w-100 btn-new"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="d-flex offset-sm-3 col-9 col-sm-7 p-0">
+            <select name="type" id="options" class="form-select w-50 me-3">
+                <option value="name">Nombre</option>
+                <option value="id">id</option>
+            </select>
+            <input class="form-control me-3 search-elements" type="search" placeholder="Search" aria-label="Search">
+        </div>
+    </div>
+    <div class="row scrollbar p-0 m-0 mb-5 mb-lg-0">
+        <table class="table table-theme table-striped table-large">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Domicilio</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Genero</th>
+                    <th>RFC</th>
+                    <th>Telefono</th>
+                    <th>Puesto</th>
+                    <th>Foto</th>
+                    <th>Usuario</th>
+                    <th>Contraseña</th>
+                    <th>Estatus</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+<template id="templ-empleado">
+    <tr class="fila large-fila">
+        <td><img class="url img-empleado" src="" alt=""></td>
+        <td class="id"></td>
+        <td class="name"></td>
+        <td class="address"></td>
+        <td class="last_pa"></td>
+        <td class="last_ma"></td>
+        <td class="gender"></td>
+        <td class="rfc"></td>
+        <td class="tel"></td>
+        <td class="jobposition"></td>
+        <td class="photo"></td>
+        <td class="user"></td>
+        <td class="password"></td>
+        <td class="status"></td>
+        <td>
+            <button class="update btn">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button class="delete btn">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        </td>
+    </tr>
+</template>
+<script src="pages/empleado/empleado.js"></script>

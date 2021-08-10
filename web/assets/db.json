@@ -1,0 +1,32 @@
+{
+  "productos": [
+    {
+      "name": "Crema",
+      "brand": "Avon",
+      "price": 300,
+      "status": 1,
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Aceite",
+      "brand": "Rossfrand",
+      "price": 300,
+      "status": 1
+    },
+    {
+      "name": "Miel",
+      "brand": "Nature",
+      "price": "45",
+      "id": 3,
+      "status": 1
+    },
+    {
+      "name": "Toalla",
+      "brand": "Booge",
+      "price": "100",
+      "id": 4,
+      "status": 1
+    }
+  ]
+}

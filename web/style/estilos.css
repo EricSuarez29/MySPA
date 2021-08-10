@@ -1,0 +1,484 @@
+:root {
+    --main-color: linear-gradient(rgb(102, 179, 230), rgba(67, 165, 160, 0.5));
+    --main-light-color: linear-gradient(
+        rgba(102, 179, 230, 0.6),
+        rgba(67, 165, 160, 0.3)
+    );
+    --text-var-color: rgb(72, 138, 182);
+    --text-var-color-dark: rgb(18, 58, 85);
+    --main-text-color: white;
+    --main-dark-text-color: rgb(66, 66, 66);
+    --second-text-color: rgb(255, 166, 0, 0.8);
+    --bg-color: azure;
+    --bg-card: rgba(89, 161, 139, 0.1);
+    --btn-red: rgb(212, 93, 93);
+    --bg-color-green: rgb(123, 192, 123);
+    --text-color-green: rgb(60, 112, 60);
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+    background-color: white;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-image: var(--main-color);
+    border-radius: 5px;
+}
+
+main {
+    margin-top: 4em;
+}
+
+.header {
+    background-image: var(--main-color);
+    color: var(--main-text-color);
+}
+
+.icon-little {
+    font-size: 1.5em;
+}
+
+a {
+    text-decoration: none;
+}
+
+.icon-menu {
+    color: rgb(255, 251, 251, 0.7);
+}
+
+.header .active {
+    border-bottom: 3px solid var(--second-text-color);
+    color: var(--second-text-color);
+}
+
+.separador {
+    border-bottom: 4px dotted rgb(243, 243, 243, 0.5);
+}
+
+.header a {
+    color: var(--main-text-color);
+    text-shadow: 1px 1px 0.2em rgba(0, 0, 0, 0.3);
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+.header a:hover {
+    color: var(--second-text-color);
+}
+
+.header a span {
+    margin-right: 0.2em;
+}
+
+.migas-pan {
+    margin: 0;
+    margin-top: 1em;
+    margin-left: 1em;
+    width: 90%;
+}
+
+.migas-pan a {
+    color: var(--main-color);
+}
+
+.migas-pan a:hover {
+    color: var(--second-text-color);
+}
+
+.banner-top div {
+    position: relative;
+}
+
+.banner-top figcaption,
+.banner-top span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: var(--bg-color);
+}
+
+.banner-top figcaption {
+    opacity: 0.8;
+    text-shadow: 2px 1px 0.3rem black;
+    font-family: Helvetica, sans-serif;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.banner-top span {
+    background-color: rgba(10, 10, 10, 0.3);
+    height: 100%;
+    transition: background 0.5s, color 0.2s;
+}
+.banner-top:hover span {
+    background-color: rgba(31, 72, 100, 0.7);
+}
+
+.banner-top img {
+    width: 100%;
+}
+
+.formulario {
+    border-radius: 0.3em;
+    background-image: var(--main-light-color);
+}
+
+.formulario h2 {
+    color: var(--main-text-color);
+}
+
+.table-theme {
+    background-image: var(--main-light-color);
+    border-radius: 0.3em;
+}
+
+.table-large {
+    min-width: 1700px;
+}
+
+.scrollbar {
+    overflow-x: scroll;
+}
+
+.scrollbar::-webkit-scrollbar {
+    height: 10px;
+    background-color: white;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background-image: var(--main-color);
+    border-radius: 5px;
+}
+
+#start-session {
+    background-image: url(https://imnc.org.mx/wp-content/uploads/2017/06/spa.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+.login-container {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s;
+    background-color: rgba(37, 69, 77, 0.3);
+}
+
+.login h1 {
+    color: var(--bg-color);
+}
+
+.login [type="text"],
+.login [type="password"] {
+    background-color: var(--bg-color);
+}
+
+.login {
+    display: block;
+    position: absolute;
+    border-radius: 0.5em;
+    background-color: rgba(75, 110, 119, 0.4);
+    box-shadow: 0 0 1em;
+    transition: transform 0.5s;
+}
+
+.main-modal {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: 0;
+    z-index: -1;
+    transition: opacity 0.5s;
+    background-color: rgb(12, 12, 12, 0.4);
+}
+
+.main-modal .formulario {
+    display: block;
+    position: absolute;
+    transform: translateY(-100%);
+    border-radius: 0.5em;
+    background-color: azure;
+    box-shadow: 0 0 1em;
+    transition: transform 0.5s;
+}
+
+.active {
+    opacity: 1;
+    visibility: 1;
+    z-index: 10;
+}
+
+.formulario [type="submit"],
+.confirm,
+.update,
+.login [type="submit"] {
+    opacity: 0.8;
+    background-color: var(--bg-card);
+    color: var(--text-var-color-dark);
+    transition: background 0.3s;
+    border: 1px solid;
+}
+
+.formulario [type="submit"]:hover,
+.confirm:hover,
+.update:hover,
+.login [type="submit"]:hover {
+    opacity: 1;
+    background-color: var(--text-var-color);
+    color: white;
+    border: 1px solid var(--text-var-color-dark);
+}
+
+.formulario .cancelar,
+.delete,
+.cancel {
+    opacity: 0.8;
+    background-color: var(--bg-card);
+    transition: background 0.5s;
+    color: var(--btn-red);
+    border: 1px solid;
+}
+
+.formulario .cancelar:hover,
+.delete:hover,
+.cancel:hover {
+    opacity: 1;
+    background-color: var(--btn-red);
+    color: white;
+    border: 1px solid var(--btn-red);
+}
+
+.active .formulario {
+    transform: translateY(0);
+}
+
+.btn-new {
+    background-color: var(--bg-card);
+    color: var(--text-color-green);
+    border: 1px solid;
+    transition: background 0.3s;
+}
+
+.btn-new:hover {
+    background-color: var(--bg-color-green);
+    color: white;
+    border: 1px solid var(--text-color-green);
+}
+
+.img-empleado {
+    width: 100px;
+}
+
+.large-fila {
+    height: 80px;
+}
+
+.large-fila td:not(:first-child) {
+    padding-top: 1.7rem;
+}
+
+.large-fila td:last-child {
+    padding-top: 1.3rem;
+}
+
+/* #carousel-images {
+  margin-top: 2em;
+}
+
+.card-image {
+  margin-top: 3em;
+  background-color: var(--bg-card);
+  border: 0;
+}
+
+.card-image h5 {
+  color: var(--text-var-color);
+  text-shadow: 1px 1px 0.1em rgb(27, 27, 27, 0.1);
+}
+
+.end-message {
+  width: 100%;
+  margin: 0;
+  padding: 0.7em;
+  margin-top: 2em;
+}
+
+.end-message img {
+  width: 100%;
+}
+
+.tratamiento {
+  background-color: var(--bg-card);
+  border: 0;
+  transition: background 0.5s;
+}
+
+.tratamiento h5 {
+  color: var(--text-var-color);
+}
+
+.tratamiento .card-body a,
+.sugerencias [type="submit"] {
+  opacity: 0.8;
+  background-color: var(--bg-card);
+  color: var(--text-var-color);
+  transition: background 0.3s;
+}
+
+.tratamiento .card-body a:hover,
+.sugerencias [type="submit"]:hover {
+  opacity: 1;
+  background-color: var(--text-var-color);
+  color: white;
+}
+.tratamiento h6 {
+  color: var(--text-var-color);
+}
+
+.tratamiento i {
+  margin-right: 0.3em;
+}
+
+
+.tratamiento:hover {
+  outline: 2px solid rgba(31, 72, 100, 0.7);
+  background-color: rgba(31, 72, 100, 0.2);
+}
+
+
+.see-more {
+  position: relative;
+}
+
+.see-more span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 150%);
+  font-size: 2em;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.see-more:hover span {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.see-more::before {
+  content: "";
+  top: 0;
+  left: 0;
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s;
+  background-color: rgb(36, 36, 36, 0.5);
+}
+
+.see-more:hover::before {
+  opacity: 1;
+}
+
+.map-location {
+  margin-top: 3em;
+}
+
+.map-location .card {
+  background-color: var(--bg-card);
+}
+
+.map-location .card iframe {
+  width: 100%;
+}
+
+.map-location .card h5,
+.map-location .card h4 {
+  color: var(--text-var-color);
+}
+
+.about-us {
+  margin-top: 2em;
+}
+
+.about-us h1,
+.about-us h5,
+.values h2 {
+  color: var(--text-var-color);
+}
+
+.values {
+  margin-top: 2em;
+}
+
+.values h2 {
+  text-align: center;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid;
+}
+
+.values .card {
+  background-color: rgba(201, 204, 207, 0);
+  border: 0;
+}
+
+.values .card h5 {
+  text-align: center;
+  color: var(--text-var-color);
+}
+
+.values .card img {
+  opacity: 0.8;
+  height: 10em;
+}
+
+.values .card-img-top {
+  text-align: center;
+}
+
+.sugerencias {
+  padding: 5em;
+  max-width: 900px;
+  background-color: var(--bg-card);
+  margin: auto;
+  margin-top: 3em;
+  border-radius: 0.3em;
+}
+
+.sugerencias h1 {
+  color: var(--text-var-color);
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.sugerencias textarea {
+  height: 10em !important;
+} */
