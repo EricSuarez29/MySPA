@@ -44,7 +44,6 @@ function setUpdateElements(btnUpdate){
     $form.querySelector(`#user`).value = btnUpdateData.user;
     $form.querySelector(`#password`).value = btnUpdateData.password;
     $form.querySelector(`#password_confirm`).value = btnUpdateData.password;
-    $form.querySelector(`#status`).checked = parseInt(btnUpdateData.status);
     $form.querySelector(`#action`).value = `UPDATE`;
     var i = searchClientById(parseInt(btnUpdateData.id));
     $form.querySelector(`#position`).value = i;
@@ -66,7 +65,7 @@ function create(form){
     cliente.email = form.email.value;
     cliente.user = form.user.value;
     cliente.password = form.password.value;
-    cliente.status = form.status.checked ? 1: 0;
+    cliente.status = 1;
 
     var i = searchClientById(cliente.id);
     if(i === -1){
@@ -142,7 +141,6 @@ function update(form){
     this.clientes[i].email = form.email.value;
     this.clientes[i].user = form.user.value;
     this.clientes[i].password = form.password.value;
-    this.clientes[i].status = form.status.checked ? 1: 0;
 
     clearForm();
     readAllElements();
@@ -256,7 +254,6 @@ function clearForm(){
     $form.querySelector(`#user`).value = "";
     $form.querySelector(`#password`).value = "";
     $form.querySelector(`#password_confirm`).value = "";
-    $form.querySelector(`#status`).checked = 1;
     $form.querySelector(`#action`).value = "CREATE";
     $form.querySelector(`#position`).value = "";
     d.querySelector(`.search-elements`).value = "";

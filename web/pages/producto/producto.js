@@ -49,7 +49,6 @@ function setUpdateElements(btnUpdate){
     $form.querySelector(`#name`).value = btnUpdateData.name;
     $form.querySelector(`#brand`).value = btnUpdateData.brand;
     $form.querySelector(`#price`).value = btnUpdateData.price;
-    $form.querySelector(`#status`).checked = parseInt(btnUpdateData.status);
     $form.querySelector(`#action`).value = `UPDATE`;
     var i = searchProductById(parseInt(btnUpdateData.id));
     $form.querySelector(`#position`).value = i;
@@ -65,16 +64,16 @@ function setUpdateElements(btnUpdate){
  */
 
 function create(form){
-    var producto = new Object();
+    var producto = new Object(); // caja vacia
 
-    producto.id = parseInt(form.id.value);
+    producto.id = parseInt(form.id.value); // atributo id
     producto.name = form.name.value;
     producto.brand = form.brand.value;
     producto.price = parseFloat(form.price.value);
-    producto.status = form.status.checked ? 1: 0;
+    producto.status = 1;
 
     var i = searchProductById(producto.id);
-    if(i === -1){
+    if(i === -1){ // si el id del producto no esta creado ejecuta esto
         productos.push(producto);
         Swal.fire({
             title: `Producto Creado`,
@@ -101,7 +100,7 @@ function create(form){
         });
     }
 
-    clearForm();
+    clearForm(); // limpia el formulario
     readAllElements();
 }
 
@@ -152,7 +151,6 @@ function update(form){
     this.productos[i].name = form.name.value;
     this.productos[i].brand = form.brand.value;
     this.productos[i].price = parseFloat(form.price.value);
-    this.productos[i].status = form.status.checked ? 1: 0;
 
     clearForm();
     readAllElements();
@@ -258,6 +256,7 @@ function setRowTable(el, fragmento){
     $template.querySelector(`.delete`).dataset.id = el.id;
     
     var $clone = d.importNode($template, true);
+    $tbody.innerHTML = $clone;
     fragmento.appendChild($clone);
 }
 
@@ -274,7 +273,6 @@ function clearForm(){
     $form.querySelector(`#name`).value = "";
     $form.querySelector(`#brand`).value = "";
     $form.querySelector(`#price`).value = "";
-    $form.querySelector(`#status`).checked = 1;
     $form.querySelector(`#action`).value = "CREATE";
     $form.querySelector(`#position`).value = "";
     d.querySelector(`.search-elements`).value = "";

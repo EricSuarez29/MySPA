@@ -7,7 +7,12 @@ var users = [
     }
 ]
 
-d.addEventListener(`submit` ,function(e){
+// elemento que este a la escucha 
+// elemento que desencadene la accion
+
+// document se refiere a toda la pagina
+
+document.addEventListener(`submit` ,function(e){
     e.preventDefault();
     if(validarUsuario()){
         window.location = `main.html`;

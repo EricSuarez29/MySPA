@@ -33,7 +33,6 @@ function setUpdateElements(btnUpdate){
     $form.querySelector(`#longitud`).value = btnUpdateData.longitud;
     $form.querySelector(`#latitud`).value = btnUpdateData.latitud;
     $form.querySelector(`#address`).value = btnUpdateData.address;
-    $form.querySelector(`#status`).checked = parseInt(btnUpdateData.status); 
     $form.querySelector(`#action`).value = `UPDATE`;
     var i = searchSucursalById(parseInt(btnUpdateData.id));
     $form.querySelector(`#position`).value = i;
@@ -49,7 +48,6 @@ function create(form){
     sucursal.longitud = parseFloat(form.longitud.value);
     sucursal.latitud = parseFloat(form.latitud.value);
     sucursal.address = form.address.value;
-    sucursal.status = form.status.checked ? 1: 0;
 
     var i = searchSucursalById(sucursal.id);
     if(i === -1){
@@ -117,7 +115,6 @@ function update(form){
     this.sucursales[i].lontitud = parseFloat(form.longitud.value);
     this.sucursales[i].latitud = parseFloat(form.latitud.value);
     this.sucursales[i].address = form.address.value;
-    this.sucursales[i].status = form.status.checked ? 1: 0;
 
     clearForm();
     readAllElements();
@@ -210,7 +207,6 @@ function clearForm(){
     $form.querySelector(`#longitud`).value = "";
     $form.querySelector(`#latitud`).value = "";
     $form.querySelector(`#address`).value = "";
-    $form.querySelector(`#status`).checked = 1;
     $form.querySelector(`#action`).value = "CREATE";
     $form.querySelector(`#position`).value = "";
     d.querySelector(`.search-elements`).value = "";

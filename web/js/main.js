@@ -24,7 +24,10 @@ d.addEventListener("submit", function(e){
 
 d.addEventListener(`click`, function(e){
     var $btnEvent = e.target;
-    if($btnEvent.matches(`.nav-link`)){
+    if($btnEvent.matches(`.nav-link`) || $btnEvent.parentElement.matches(`.nav-link`)){
+        $btnEvent = $btnEvent.parentElement.matches(`.nav-link`)
+            ? $btnEvent.parentElement
+            : $btnEvent;
         e.preventDefault();
         for(var i = 0; i < $links.length; i++){
             $links[i].classList.remove(`active`);
@@ -32,25 +35,32 @@ d.addEventListener(`click`, function(e){
         $btnEvent.classList.add(`active`);
         setContentHTML(`#main-content`, $btnEvent.href);
     }
-    if($btnEvent.matches(`.update`)){
+    if($btnEvent.matches(`.update`) || $btnEvent.parentElement.matches(`.update`)){
+        $btnEvent = $btnEvent.parentElement.matches(`.update`)
+            ? $btnEvent.parentElement
+            : $btnEvent;
         $btnEvent.blur();
         setUpdateElements($btnEvent);
         showModal(true);
     }
-    if($btnEvent.matches(`.btn-new`)){
+    if($btnEvent.matches(`.btn-new`) || $btnEvent.parentElement.matches(`.btn-new`)){
+        $btnEvent = $btnEvent.parentElement.matches(`.btn-new`)
+            ? $btnEvent.parentElement
+            : $btnEvent;
         $btnEvent.blur();
         showModal(true);
     }
     
-    if(e.target.matches(`.delete`)){
-        
+    if($btnEvent.matches(`.delete`) || $btnEvent.parentElement.matches(`.delete`)){
+        $btnEvent = $btnEvent.parentElement.matches(`.delete`)
+            ? $btnEvent.parentElement
+            : $btnEvent;
         $btnEvent.blur();
         Swal.fire({
             title: `Eliminar`,
             text: `¿Esta seguro de eliminar este producto con id ${$btnEvent.dataset.id}?`,
             icon: `warning`,
             padding: '2rem',
-            backdrop: true,
             position: 'center',
             showCancelButton: true,
             showConfirmButton: true,
@@ -60,7 +70,7 @@ d.addEventListener(`click`, function(e){
             confirmButtonColor: 'rgb(72, 138, 182)'
         }).then(function(result){
             if(result.isConfirmed){
-                deleteById(e.target.dataset.id);
+                deleteById($btnEvent.dataset.id);
             }
         });
     }
@@ -102,7 +112,7 @@ function setContentHTML(contenedor, url){
     })
     .then(res => res.ok? res.text() : Promise.reject())
     .then(html => $(contenedor).html(html))
-    .catch(err => contenedor.innerHTML = `<h3>Ocurrio un error: ${err.statusText}</h3>`);
+    .catch(err => contenedor.innerHTML = `<h3>Ocurrio un error: ${err.status}</h3>`);
 }
 
 /**

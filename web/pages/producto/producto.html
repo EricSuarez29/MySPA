@@ -1,5 +1,5 @@
-<article class="row col-12 m-auto mb-3">
-    <figure class="figure mt-3 banner-top">
+<article class="row col-12 p-0 m-0 mb-3">
+    <figure class="figure mt-3 banner-top m-0 p-0">
         <div>
             <span></span>
             <img src="assets/images/banner-tratamientos.png" class="img-fluid" alt="productos de spa">
@@ -8,8 +8,8 @@
     </figure>
 </article>
 
-<article class="main-modal col-8 m-lg-0 m-auto">
-    <form action="" class="form formulario col-10 col-sm-6 col-xl-4 p-3 p-lg-5">
+<article class="main-modal col-8">
+    <form action="" class="form formulario col-10 col-sm-6 col-xxl-4 p-1 p-sm-3 p-xxl-5">
         <div class="row p-0 m-0">
             <h2 class="mb-5 title-form">Nuevo Producto</h2>
             <div class="form-floating mb-4 col-3">
@@ -32,10 +32,6 @@
                     required>
                 <label for="price" class="mx-3">Precio</label>
             </div>
-            <div class="form-check form-switch mb-3 px-5 mx-3">
-                <input class="form-check-input" type="checkbox" id="status" name="status" checked>
-                <label class="form-check-label" for="status">Estatus</label>
-            </div>
             <input type="hidden" name="action" id="action" value="CREATE">
             <input type="hidden" name="position" id="position" value="">
             <div class="row col-12 col-xl-8 m-auto p-0">
@@ -49,18 +45,24 @@
         </div>
     </form>
 </article>
-<div class="col-12 mt-5 mt-lg-0">
-    <div class="row mb-3 m-0 p-0 px-3">
-        <div class="col-3 col-sm-2">
-            <button class="btn w-100 btn-new"><i class="fas fa-plus"></i></button>
+<div class="col-12 mt-5 mt-xl-3 px-3 px-xl-4">
+    <div class="row mb-3 m-0 p-0">
+        <div class="col-2">
+            <button class="btn w-100 btn-new"><i class="fas fa-file-alt"></i> Nuevo</button>
         </div>
-        <div class="d-flex offset-sm-3 col-9 col-sm-7 p-0">
+        <div class="col-3 col-xl-5 d-flex justify-content-end">
+            <div class="form-check form-switch pt-2">
+                <input class="form-check-input" type="checkbox" id="status" checked>
+                <label class="form-check-label" for="status">Estatus</label>
+            </div>
+        </div>
+        <div class="d-flex bd-highlight col-7 col-xl-5 p-0 m-0">
             <select name="type" id="options" class="form-select w-50 me-3">
                 <option value="name">Nombre</option>
                 <option value="id">id</option>
                 <option value="brand">Marca</option>
             </select>
-            <input class="form-control me-3 search-elements" type="search" placeholder="Buscar" aria-label="Buscar">
+            <input class="form-control search-elements" type="search" placeholder="Buscar" aria-label="Buscar">
         </div>
     </div>
     <table class="table table-theme table-striped">
