@@ -9,11 +9,11 @@
     --text-var-color-dark: rgb(18, 58, 85);
     --main-text-color: white;
     --main-dark-text-color: rgb(66, 66, 66);
-    --second-text-color: rgb(152, 200, 255); /*rgb(255, 166, 0, 0.8);*/
-    /* --bg-color: azure; */
-    --bg-color: rgba(252, 245, 243, 0.1);
+    --second-text-color: rgb(42, 100, 148);
+    --bg-color: rgba(23, 86, 138, 0.1);
     --bg-card: rgba(89, 161, 139, 0.1);
-    --bg-form: rgb(255, 247, 241);
+    --bg-form: rgb(203, 211, 218);
+    --bg-login: rgba(181, 203, 221, 0.8);
     --btn-red: rgb(212, 93, 93);
     --bg-color-green: rgb(123, 192, 123);
     --text-color-green: rgb(60, 112, 60);
@@ -187,14 +187,14 @@ a {
 
 .login [type="text"],
 .login [type="password"] {
-    background-color: var(--bg-color);
+    background-color: white;
 }
 
 .login {
     display: block;
     position: absolute;
     border-radius: 0.5em;
-    background-color: rgb(228, 241, 241, 0.8);
+    background-color: var(--bg-login);
     box-shadow: 0 0 1em;
 }
 
