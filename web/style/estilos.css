@@ -147,6 +147,14 @@ a {
     min-width: 1700px;
 }
 
+.table-medium {
+    min-width: 800px;
+}
+
+.table-min {
+    min-width: 500px;
+}
+
 .scrollbar {
     overflow-x: scroll;
 }

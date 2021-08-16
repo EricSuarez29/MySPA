@@ -1,15 +1,15 @@
-<article class="row col-12 m-auto mb-3">
-    <figure class="figure mt-3 banner-top">
+<article class="row col-12 p-0 m-0 mb-3 mt-sm-0 mt-lg-1 mt-xxl-0">
+    <figure class="figure mt-3 banner-top m-0 p-0">
         <div>
             <span></span>
             <img src="assets/images/banner-tratamientos.png" class="img-fluid" alt="productos de spa">
-            <figcaption class="figure-caption align-self-center">Horarios</figcaption>
+            <figcaption class="figure-caption align-self-center fs-1">Horarios</figcaption>
         </div>
     </figure>
 </article>
 
-<article class="col-8 col-lg-4 m-lg-0 m-auto">
-    <form action="" class="form formulario p-5 p-lg-3">
+<article class="main-modal col-8">
+    <form action="" class="form formulario col-11 col-sm-6 col-xxl-4 p-3 p-xl-5">
         <h2 class="mb-5 title-form">Nuevo Horario</h2>
         <label for="id" class="mb-3"></label>
         <div class="form-floating mb-3">
@@ -20,29 +20,22 @@
             <input type="time" class="form-control" name="end" id="end" placeholder="example" autocomplete="off" reaquired>
             <label for="end">Hoario de Termino</label>
         </div>
-        <input type="hidden" name="id" id="id" value="">
+        <input type="hidden" name="position" id="position" value="">
+        <input type="hidden" name="action" id="action" value="">
         <div class="row col-12 m-0 p-0">
             <div class="col-6">
-                <input type="submit" class="btn btn-dark w-100" name="btn-submit" value="Crear">
+                <input type="submit" class="btn w-100" name="btn-submit" value="Crear">
             </div>
             <div class="col-6">
-                <a class="btn btn-danger cancelar w-100">Limpiar</a>
+                <a class="btn cancelar w-100">Cancelar</a>
             </div>
         </div>
     </form>
 </article>
-<div class="col-12 col-lg-8 mt-5 mt-lg-0">
-    <div class="row mb-3 m-0 p-0 px-3">
-        <div class="d-flex offset-5 col-7 p-0">
-            <select name="type" id="" class="form-select w-50 me-3">
-                <option value="">buscar por</option>
-                <option value="id">id</option>
-                <option value="name">Nombre</option>
-                <option value="brand">Marca</option>
-            </select>
-            <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success">Search</button>
-
+<div class="col-12 mt-5 mt-xl-3 px-3 px-xl-4">
+    <div class="row mb-3 m-0 p-0">
+        <div class="col-5 col-sm-3 col-xl-2 d-flex justify-content-start">
+            <button class="btn w-100 btn-new"><i class="fas fa-file-alt"></i> Nuevo</button>
         </div>
     </div>
     <table class="table table-theme table-striped">
@@ -57,16 +50,16 @@
         <tbody></tbody>
     </table>
 </div>
-<template id="templ-producto">
+<template id="templ-horario">
     <tr>
         <td class="id"></td>
         <td class="start"></td>
         <td class="end"></td>
         <td>
-            <button class="update btn btn-primary">
+            <button class="update btn">
                 <i class="fas fa-edit"></i>
             </button>
-            <button class="delete delete btn btn-danger">
+            <button class="delete delete btn">
                 <i class="fas fa-trash-alt"></i>
             </button>
         </td>

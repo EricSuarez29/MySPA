@@ -275,7 +275,6 @@ function clearForm(){
     $form.querySelector(`#price`).value = "";
     $form.querySelector(`#action`).value = "CREATE";
     $form.querySelector(`#position`).value = "";
-    d.querySelector(`.search-elements`).value = "";
 }
 
 readAllElements();

@@ -9,7 +9,7 @@
 </article>
 
 <article class="main-modal col-8">
-    <form action="" class="form formulario col-10 col-sm-6 col-xxl-4 p-1 p-sm-3 p-xxl-5">
+    <form action="" class="form formulario col-10 col-sm-6 col-xxl-4 p-3 p-xl-5">
         <div class="row p-0 m-0">
             <h2 class="mb-5 title-form">Nuevo Producto</h2>
             <div class="form-floating mb-4 col-3">
@@ -27,7 +27,7 @@
                     reaquired>
                 <label for="brand" class="mx-3">Marca</label>
             </div>
-            <div class="form-floating mb-3 col-6">
+            <div class="form-floating mb-4 col-6">
                 <input type="text" class="form-control" name="price" id="price" placeholder="example" autocomplete="off"
                     required>
                 <label for="price" class="mx-3">Precio</label>
@@ -47,37 +47,25 @@
 </article>
 <div class="col-12 mt-5 mt-xl-3 px-3 px-xl-4">
     <div class="row mb-3 m-0 p-0">
-        <div class="col-2">
+        <div class="col-5 col-sm-3 col-xl-2 d-flex justify-content-start">
             <button class="btn w-100 btn-new"><i class="fas fa-file-alt"></i> Nuevo</button>
         </div>
-        <div class="col-3 col-xl-5 d-flex justify-content-end">
-            <div class="form-check form-switch pt-2">
-                <input class="form-check-input" type="checkbox" id="status" checked>
-                <label class="form-check-label" for="status">Estatus</label>
-            </div>
-        </div>
-        <div class="d-flex bd-highlight col-7 col-xl-5 p-0 m-0">
-            <select name="type" id="options" class="form-select w-50 me-3">
-                <option value="name">Nombre</option>
-                <option value="id">id</option>
-                <option value="brand">Marca</option>
-            </select>
-            <input class="form-control search-elements" type="search" placeholder="Buscar" aria-label="Buscar">
-        </div>
     </div>
-    <table class="table table-theme table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Marca</th>
-                <th>Precio</th>
-                <th>Estatus</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <div class="row scrollbar p-0 m-0 mb-5 mb-lg-0">
+        <table class="table table-min table-theme table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Precio</th>
+                    <th>Estatus</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 </div>
 <template id="templ-producto">
     <tr class="fila">

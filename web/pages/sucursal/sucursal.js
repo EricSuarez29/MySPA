@@ -161,22 +161,6 @@ function searchSucursalById(id){
     return -1;
 }
 
-function searchFilters(selector, value){
-    var option = d.getElementById(`options`),
-        optionSelect = option.options[option.selectedIndex].value;
-    if(!optionSelect) return;
-
-    var elements = d.querySelectorAll(selector);
-
-    for(var i = 0; i < elements.length; i++){
-        elements[i].querySelector(`.${optionSelect}`).textContent
-        .toLowerCase().includes(value)
-        ? elements[i].classList.remove(`d-none`)
-        : elements[i].classList.add(`d-none`)
-    }
-}
-
-
 function setRowTable(el, fragmento){
     $template.querySelector(`.id`).textContent = el.id;
     $template.querySelector(`.name`).textContent = el.name;
@@ -209,7 +193,6 @@ function clearForm(){
     $form.querySelector(`#address`).value = "";
     $form.querySelector(`#action`).value = "CREATE";
     $form.querySelector(`#position`).value = "";
-    d.querySelector(`.search-elements`).value = "";
 }
 
 readAllElements();
