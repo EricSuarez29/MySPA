@@ -27,14 +27,14 @@ function setUpdateElements(btnUpdate){
     $form.querySelector(`.title-form`).textContent = `Editar Sucursal`;
     $form.querySelector(`[type='submit']`).value = `Editar`;
 
-    var btnUpdateData = btnUpdate.dataset;
-    $form.querySelector(`#id`).value = btnUpdateData.id;
-    $form.querySelector(`#name`).value = btnUpdateData.name;
-    $form.querySelector(`#longitud`).value = btnUpdateData.longitud;
-    $form.querySelector(`#latitud`).value = btnUpdateData.latitud;
-    $form.querySelector(`#address`).value = btnUpdateData.address;
+    var btnUpdate = btnUpdate.dataset;
+    $form.querySelector(`#id`).value = btnUpdate.id;
+    $form.querySelector(`#name`).value = btnUpdate.name;
+    $form.querySelector(`#longitud`).value = btnUpdate.longitud;
+    $form.querySelector(`#latitud`).value = btnUpdate.latitud;
+    $form.querySelector(`#address`).value = btnUpdate.address;
     $form.querySelector(`#action`).value = `UPDATE`;
-    var i = searchSucursalById(parseInt(btnUpdateData.id));
+    var i = searchSucursalById(parseInt(btnUpdate.id));
     $form.querySelector(`#position`).value = i;
 }
 

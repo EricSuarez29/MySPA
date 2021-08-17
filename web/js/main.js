@@ -3,25 +3,6 @@ var d = document,
     $form = d.querySelector(`.formulario`),
     $links = d.querySelectorAll(`.nav-link`);
 
-d.addEventListener("submit", function(e){
-    e.preventDefault();
-    var form = e.target;
-    if(form.matches(`.formulario`)){
-        e.preventDefault();
-        if(form.action.value === `CREATE`){
-            // Create
-            create(form);
-            showModal(false);
-        }
-        if(form.action.value === `UPDATE`){
-            // Update
-            update(form);
-            showModal(false);
-        }
-    }
-})
-
-
 d.addEventListener(`click`, function(e){
     var $btnEvent = e.target;
     if($btnEvent.matches(`.nav-link`) || $btnEvent.parentElement.matches(`.nav-link`)){
@@ -34,61 +15,6 @@ d.addEventListener(`click`, function(e){
         }
         $btnEvent.classList.add(`active`);
         setContentHTML(`#main-content`, $btnEvent.href);
-    }
-    if($btnEvent.matches(`.update`) || $btnEvent.parentElement.matches(`.update`)){
-        $btnEvent = $btnEvent.parentElement.matches(`.update`)
-            ? $btnEvent.parentElement
-            : $btnEvent;
-        $btnEvent.blur();
-        setUpdateElements($btnEvent);
-        showModal(true);
-    }
-    if($btnEvent.matches(`.btn-new`) || $btnEvent.parentElement.matches(`.btn-new`)){
-        $btnEvent = $btnEvent.parentElement.matches(`.btn-new`)
-            ? $btnEvent.parentElement
-            : $btnEvent;
-        $btnEvent.blur();
-        showModal(true);
-    }
-    
-    if($btnEvent.matches(`.delete`) || $btnEvent.parentElement.matches(`.delete`)){
-        $btnEvent = $btnEvent.parentElement.matches(`.delete`)
-            ? $btnEvent.parentElement
-            : $btnEvent;
-        $btnEvent.blur();
-        Swal.fire({
-            title: `Eliminar`,
-            text: `¿Esta seguro de eliminar este producto con id ${$btnEvent.dataset.id}?`,
-            icon: `warning`,
-            padding: '2rem',
-            position: 'center',
-            showCancelButton: true,
-            showConfirmButton: true,
-            cancelButtonText: 'Cancelar',
-            confirmButtonText: 'Confirmar',
-            cancelButtonColor: 'rgb(212, 93, 93)',
-            confirmButtonColor: 'rgb(72, 138, 182)'
-        }).then(function(result){
-            if(result.isConfirmed){
-                deleteById($btnEvent.dataset.id);
-            }
-        });
-    }
-    if(e.target.matches(`.cancelar`)){
-        $btnEvent.blur();
-        showModal(false);
-        clearForm();
-    }
-});
-
-d.addEventListener(`keyup`, function(e){
-    var $btnEvent = e.target;
-    if($btnEvent.matches(`.search-elements`)){
-        searchFilters(`.fila`, $btnEvent.value);
-    }
-    if(e.key === `Escape` && d.querySelector(`.main-modal`).matches(`.active`)){
-        showModal(false);
-        clearForm();
     }
 });
 

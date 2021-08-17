@@ -1,8 +1,6 @@
 var d = document,
-    $template = d.getElementById(`templ-producto`).content,
     $tbody = d.querySelector(`tbody`),
     $form = d.querySelector(`.formulario`);
-    // productosFiltrados;
 
 var productos = [
         {
@@ -35,26 +33,23 @@ var productos = [
         }
 ]
 
-/**
- * Esta función establece los datos en el modal para posteriormente sean actualizados.
- * @param {Object} btnUpdate El boton que contiene los data attributes
- */
-
-function setUpdateElements(btnUpdate){
-    $form.querySelector(`.title-form`).textContent = `Editar Producto`;
-    $form.querySelector(`[type='submit']`).value = `Editar`;
-
-    var btnUpdateData = btnUpdate.dataset;
-    $form.querySelector(`#id`).value = btnUpdateData.id;
-    $form.querySelector(`#name`).value = btnUpdateData.name;
-    $form.querySelector(`#brand`).value = btnUpdateData.brand;
-    $form.querySelector(`#price`).value = btnUpdateData.price;
-    $form.querySelector(`#action`).value = `UPDATE`;
-    var i = searchProductById(parseInt(btnUpdateData.id));
-    $form.querySelector(`#position`).value = i;
-}
 
 // CRUD ----------------------------------------------------------------
+
+/**
+ * Esta función gestiona las acciones al momendo de crear o actualizar un elemento.
+ */
+
+
+function accion(){
+    var $accion = d.getElementById(`action`);
+    if($accion.value === `CREATE`){
+        create();
+    }
+    if($accion.value === `UPDATE`){
+        update();
+    }
+}
 
 /**
  * Esta función recibe el formulario donde se genero el evento de tipo 'submit',
@@ -63,15 +58,15 @@ function setUpdateElements(btnUpdate){
  * @param {Object} form El formulario del modulo donde se genero el evento submit.
  */
 
-function create(form){
+function create(){
     var producto = new Object(); // caja vacia
-
-    producto.id = parseInt(form.id.value); // atributo id
-    producto.name = form.name.value;
-    producto.brand = form.brand.value;
-    producto.price = parseFloat(form.price.value);
+    
+    producto.id = parseInt(d.getElementById(`id`).value); // atributo id
+    producto.name = d.getElementById(`name`).value;
+    producto.brand = d.getElementById(`brand`).value;
+    producto.price = parseFloat(d.getElementById(`price`).value);
     producto.status = 1;
-
+    
     var i = searchProductById(producto.id);
     if(i === -1){ // si el id del producto no esta creado ejecuta esto
         productos.push(producto);
@@ -99,8 +94,8 @@ function create(form){
             showConfirmButton: false
         });
     }
-
-    clearForm(); // limpia el formulario
+    
+    showModal(false) // limpia el formulario
     readAllElements();
 }
 
@@ -111,12 +106,51 @@ function create(form){
  */
 
 function readAllElements(){
-    var $fragmento = d.createDocumentFragment();
+    var contenido = ``;
+    
     for(var i = 0; i < this.productos.length; i++){
-        setRowTable(this.productos[i], $fragmento);
+        contenido += getContentRow(this.productos[i]);
     }
-    $tbody.innerHTML = '';
-    $tbody.appendChild($fragmento);
+    $tbody.innerHTML = contenido;
+}
+
+function getContentRow(el){
+    return `
+    <tr class="fila">
+    <td class="id">${el.id}</td>
+    <td class="name">${el.name}</td>
+    <td class="brand">${el.brand}</td>
+    <td class="price">${el.price}</td>
+    <td class="status">${el.status}</td>
+    <td>
+    <button class="update btn" onclick="setUpdateElements(${el.id})">
+    <i class="fas fa-edit"></i>
+    </button>
+    <button class="delete btn" onclick="deleteById(${el.id});">
+    <i class="fas fa-trash-alt"></i>
+    </button>
+    </td>
+    </tr>
+    `;
+}
+
+function showModal(isActive){
+    var modal = d.querySelector(`.main-modal`);
+    if(isActive){
+        modal.classList.add(`active`);
+    } else{
+        modal.classList.remove(`active`);
+        clearForm();
+    } 
+}
+
+function getProductById(id){
+    for(var i = 0; i < productos.length; i++){
+        if(productos[i].id === id){
+            return productos[i];
+        }
+    }
+    return null;
 }
 
 /**
@@ -126,10 +160,10 @@ function readAllElements(){
  * @returns {void}
  */
 
-function update(form){
-    var i = parseInt(form.position.value);
-    var j = searchProductById(parseInt(form.id.value));
-
+function update(){
+    var i = parseInt(d.getElementById(`position`).value);
+    var j = searchProductById(parseInt(d.getElementById(`id`).value));
+    
     if(j !== -1 && j !== i) {
         
         Swal.fire({
@@ -137,37 +171,56 @@ function update(form){
             text: `El id del producto ya existe`,
             icon: `error`,
             padding: '2rem',
-            backdrop: true,
             toast: true,
             position: 'top-end',
             timer: 2500,
             showConfirmButton: false
         });
-
+        
         return;
     }
-
-    this.productos[i].id = parseInt(form.id.value);
-    this.productos[i].name = form.name.value;
-    this.productos[i].brand = form.brand.value;
-    this.productos[i].price = parseFloat(form.price.value);
-
-    clearForm();
+    
+    this.productos[i].id = parseInt(d.getElementById(`id`).value);
+    this.productos[i].name = d.getElementById(`name`).value;
+    this.productos[i].brand = d.getElementById(`brand`).value;
+    this.productos[i].price = parseFloat(d.getElementById(`price`).value);
+    
+    showModal(false);
     readAllElements();
-
-
+    
+    
     Swal.fire({
         title: `Producto Actualizado`,
         text: `El producto se actualizo correctamente`,
         icon: `success`,
         padding: '2rem',
-        backdrop: true,
         toast: true,
         position: 'top-end',
         timer: 1500,
         showConfirmButton: false
     });
+    
+}
 
+/**
+ * Esta función establece los datos en el modal para posteriormente sean actualizados.
+ * @param {Object} btnUpdate El boton que contiene los data attributes
+ */
+
+function setUpdateElements(id){
+    $form.querySelector(`.title-form`).textContent = `Editar Producto`;
+    $form.querySelector(`.create`).textContent = `Editar`;
+
+    var btnUpdate = getProductById(id);
+    $form.querySelector(`#id`).value = btnUpdate.id;
+    $form.querySelector(`#name`).value = btnUpdate.name;
+    $form.querySelector(`#brand`).value = btnUpdate.brand;
+    $form.querySelector(`#price`).value = btnUpdate.price;
+    $form.querySelector(`#action`).value = `UPDATE`;
+    var i = searchProductById(parseInt(btnUpdate.id));
+    $form.querySelector(`#position`).value = i;
+
+    showModal(true);
 }
 
 /**
@@ -176,23 +229,38 @@ function update(form){
  */
 
 function deleteById(id){
-    this.productos = this.productos.filter(function(el){
-        return el.id !== parseInt(id);
-    });
-    
     Swal.fire({
-        title: `Producto Eliminado`,
-        text: `El producto fue eliminado correctamente`,
-        icon: `success`,
+        title: `Eliminar`,
+        text: `¿Esta seguro de eliminar este elemento con id ${id}?`,
+        icon: `warning`,
         padding: '2rem',
-        backdrop: true,
-        toast: true,
-        position: 'top-end',
-        timer: 1500,
-        showConfirmButton: false
+        position: 'center',
+        showCancelButton: true,
+        showConfirmButton: true,
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Confirmar',
+        cancelButtonColor: 'rgb(212, 93, 93)',
+        confirmButtonColor: 'rgb(72, 138, 182)'
+    }).then(function(result){
+        if(result.isConfirmed){
+            this.productos = this.productos.filter(function(el){
+                return el.id !== parseInt(id);
+            });
+            
+            Swal.fire({
+                title: `Producto Eliminado`,
+                text: `El producto fue eliminado correctamente`,
+                icon: `success`,
+                padding: '2rem',
+                toast: true,
+                position: 'top-end',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        
+            readAllElements();
+        }
     });
-
-    readAllElements();
 }
 
 /**
@@ -212,62 +280,13 @@ function searchProductById(id){
 }
 
 /**
- * Esta función filtra los objetos dependiendo de el criterio que le pasemos,
- * por parametro.
- * @param {String} selector El selector con el cual evalua el filtrado
- * @param {String} value El o los caracteres que se desean encontrar.
- * @returns {void}
- */
-
-function searchFilters(selector, value){
-    var option = d.getElementById(`options`),
-        optionSelect = option.options[option.selectedIndex].value;
-    if(!optionSelect) return;
-
-    var elements = d.querySelectorAll(selector);
-
-    for(var i = 0; i < elements.length; i++){
-        elements[i].querySelector(`.${optionSelect}`).textContent
-        .toLowerCase().includes(value)
-        ? elements[i].classList.remove(`d-none`)
-        : elements[i].classList.add(`d-none`)
-    }
-}
-
-/**
- * Esta función establece los elementos dentro de un fragmento.
- * @param {Object} el El elemento o objeto que se quiere insertar
- * @param {Object} fragmento El fragamento donde se quiere guardar el objeto
- */
-
-function setRowTable(el, fragmento){
-    $template.querySelector(`.id`).textContent = el.id;
-    $template.querySelector(`.name`).textContent = el.name;
-    $template.querySelector(`.brand`).textContent = el.brand;
-    $template.querySelector(`.price`).textContent = el.price;
-    $template.querySelector(`.status`).textContent = el.status;
-    
-    $template.querySelector(`.update`).dataset.id = el.id; 
-    $template.querySelector(`.update`).dataset.name = el.name; 
-    $template.querySelector(`.update`).dataset.brand = el.brand; 
-    $template.querySelector(`.update`).dataset.price = el.price;
-    $template.querySelector(`.update`).dataset.status = el.status;
-    
-    $template.querySelector(`.delete`).dataset.id = el.id;
-    
-    var $clone = d.importNode($template, true);
-    $tbody.innerHTML = $clone;
-    fragmento.appendChild($clone);
-}
-
-/**
  * Esta función limpia todos los campos del formulario, y le
  * da al mismo un estado inicial.
  */
 
 function clearForm(){
     $form.querySelector(`.title-form`).textContent = `Nuevo Producto`;
-    $form.querySelector(`[type='submit']`).value = `Crear`;
+    $form.querySelector(`.create`).textContent = `Crear`;
     
     $form.querySelector(`#id`).value = "";
     $form.querySelector(`#name`).value = "";

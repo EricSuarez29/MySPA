@@ -9,7 +9,7 @@
 </article>
 
 <article class="main-modal col-8">
-    <form action="" class="form formulario col-10 col-sm-6 col-xxl-4 p-3 p-xl-5">
+    <div class="form formulario col-10 col-sm-6 col-xxl-4 p-3 p-xl-5">
         <div class="row p-0 m-0">
             <h2 class="mb-5 title-form">Nuevo Producto</h2>
             <div class="form-floating mb-4 col-3">
@@ -36,19 +36,19 @@
             <input type="hidden" name="position" id="position" value="">
             <div class="row col-12 col-xl-8 m-auto p-0">
                 <div class="col-6">
-                    <input type="submit" class="btn w-100" name="btn-submit" value="Crear">
+                    <button class="btn w-100 create" onclick="accion();">Crear</button>
                 </div>
                 <div class="col-6">
-                    <a class="btn cancelar w-100">Cancelar</a>
+                    <a class="btn cancelar w-100" onclick="showModal(false);">Cancelar</a>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 </article>
 <div class="col-12 mt-5 mt-xl-3 px-3 px-xl-4">
     <div class="row mb-3 m-0 p-0">
         <div class="col-5 col-sm-3 col-xl-2 d-flex justify-content-start">
-            <button class="btn w-100 btn-new"><i class="fas fa-file-alt"></i> Nuevo</button>
+            <button class="btn w-100 btn-new" onclick="showModal(true)"><i class="fas fa-file-alt"></i> Nuevo</button>
         </div>
     </div>
     <div class="row scrollbar p-0 m-0 mb-5 mb-lg-0">

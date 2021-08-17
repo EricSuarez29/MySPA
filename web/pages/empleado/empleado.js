@@ -27,28 +27,28 @@ function setUpdateElements(btnUpdate){
     $form.querySelector(`.title-form`).textContent = `Editar Empleado`;
     $form.querySelector(`[type='submit']`).value = `Editar`;
 
-    var btnUpdateData = btnUpdate.dataset;
-    $form.querySelector(`#id`).value = btnUpdateData.id;
-    $form.querySelector(`#name`).value = btnUpdateData.name;
-    $form.querySelector(`#address`).value = btnUpdateData.address;
-    $form.querySelector(`#last_pa`).value = btnUpdateData.last_pa;
-    $form.querySelector(`#last_ma`).value = btnUpdateData.last_ma;
-    $form.querySelector(`#${btnUpdateData.gender === `H`
+    var btnUpdate = btnUpdate.dataset;
+    $form.querySelector(`#id`).value = btnUpdate.id;
+    $form.querySelector(`#name`).value = btnUpdate.name;
+    $form.querySelector(`#address`).value = btnUpdate.address;
+    $form.querySelector(`#last_pa`).value = btnUpdate.last_pa;
+    $form.querySelector(`#last_ma`).value = btnUpdate.last_ma;
+    $form.querySelector(`#${btnUpdate.gender === `H`
         ? "man-gender"
-        : btnUpdateData.gender === `M` 
+        : btnUpdate.gender === `M` 
             ? "womam-gender"
             : "other-gender"}`)
     .checked = true;
-    $form.querySelector(`#rfc`).value = btnUpdateData.rfc;
-    $form.querySelector(`#tel`).value = btnUpdateData.tel;
-    $form.querySelector(`#jobposition`).value = btnUpdateData.jobposition;
-    $form.querySelector(`#photo`).value = btnUpdateData.jobposition;
-    // $form.querySelector(`#url`).value = btnUpdateData.url;
-    $form.querySelector(`#user`).value = btnUpdateData.user;
-    $form.querySelector(`#password`).value = btnUpdateData.password;
-    $form.querySelector(`#password_confirm`).value = btnUpdateData.password;
+    $form.querySelector(`#rfc`).value = btnUpdate.rfc;
+    $form.querySelector(`#tel`).value = btnUpdate.tel;
+    $form.querySelector(`#jobposition`).value = btnUpdate.jobposition;
+    $form.querySelector(`#photo`).value = btnUpdate.jobposition;
+    // $form.querySelector(`#url`).value = btnUpdate.url;
+    $form.querySelector(`#user`).value = btnUpdate.user;
+    $form.querySelector(`#password`).value = btnUpdate.password;
+    $form.querySelector(`#password_confirm`).value = btnUpdate.password;
     $form.querySelector(`#action`).value = `UPDATE`;
-    var i = searchEmpleadoById(parseInt(btnUpdateData.id));
+    var i = searchEmpleadoById(parseInt(btnUpdate.id));
     $form.querySelector(`#position`).value = i;
 }
 
